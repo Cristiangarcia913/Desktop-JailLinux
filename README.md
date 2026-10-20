@@ -1,64 +1,90 @@
-# Sistema de Gestión de Prisión 🏛️🔐
+# 🐧 Desktop-JailLinux
 
-Este sistema de escritorio, desarrollado en Python con `tkinter`, simula la gestión de una prisión desde dos tipos de usuarios: **Carcelero** y **Prisionero**. Permite registrar, visualizar y administrar información de internos, visitas, quejas y mucho más.
+> **Entorno de escritorio interactivo y simulador de políticas de seguridad en sistemas operativos (Roles Carcelero / Prisionero) desarrollado en Python y Tkinter.**
 
-## 📦 Requisitos del Sistema
-
-- Python 3.8 o superior
-- Ubuntu/Debian (o compatible)
-- Librerías necesarias:
-
-```bash
-sudo apt update
-sudo apt install python3-tk python3-pip -y
-pip install pillow requests
-```
-
-## 🚀 Ejecución
-
-Desde terminal, en la carpeta del proyecto, ejecutar:
-
-```bash
-python3 dekstop.py
-```
-
-## 👥 Tipos de Usuario
-
-### 👮 Modo Carcelero
-
-- Gestión de prisioneros y celdas
-- Registro de visitas
-- Generación de reportes
-- Botón para ejecutar `mishell.sh` (opcional)
-
-### 👤 Modo Prisionero
-
-- Visualización de perfil y días restantes
-- Solicitud de visitas
-- Registro de quejas
-- Acceso a juegos (Snake y Tetris)
-- Reglamento y actividades disponibles
-
-## 🗂 Estructura de Datos
-
-Se genera automáticamente la carpeta `datos_prision/` con los siguientes archivos:
-
-```
-datos_prision/
-├── prisioneros/
-├── celdas/
-├── visitas/
-├── solicitudes/
-├── quejas/
-├── reportes/
-```
-
-Cada módulo gestiona y guarda su información en archivos `.json`.
-
-## 📝 Notas Finales
-
-- Para usar el botón “🐚 Mishell” en modo carcelero, se debe crear un script ejecutable llamado `mishell.sh`.
-- Interfaz optimizada para resolución 1024x768.
-- Aplicación con fines educativos y de simulación.
+<p align="left">
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" />
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white" alt="Python 3.9+" />
+  <img src="https://img.shields.io/badge/GUI-Tkinter-green?logo=python" alt="Tkinter GUI" />
+  <img src="https://img.shields.io/badge/Systems-Linux%20Simulation-FCC624?logo=linux&logoColor=black" alt="Linux Security" />
+</p>
 
 ---
+
+## 🎯 Descripción del Proyecto
+
+**Desktop-JailLinux** es una aplicación de escritorio que emula el control de acceso basado en roles (RBAC) y la gestión de entornos de ejecución restringidos (*chroot / jail*) para un sistema operativo temático penitenciario.
+
+Forma parte de la suite **JailLinux** desarrollada en la **Universidad Camilo José Cela (UCJC)** para la materia de **Sistemas Operativos**.
+
+---
+
+## 🏗️ Arquitectura y Componentes
+
+La solución cuenta con más de 1.100 líneas de código organizadas en arquitectura modular:
+
+```text
+├── dekstop.py        # Launcher principal de autenticación y selección de rol
+├── carcelero.py      # Entorno de administración (Warden Desktop)
+├── prisionero.py     # Entorno restringido en Sandbox (Inmate Desktop)
+├── requirements.txt  # Dependencias del proyecto
+└── LICENSE           # Licencia abierta MIT
+```
+
+### 👮‍♂️ 1. Rol Carcelero (`carcelero.py` — Panel Administrativo)
+- Control integral del sistema, supervisión de procesos y monitoreo de actividad.
+- Gestión de usuarios y permisos de ejecución.
+- Registro y auditoría en tiempo real de eventos de seguridad.
+- Ejecución controlada de subprocesos y comandos administrativos.
+
+### ⛓️ 2. Rol Prisionero (`prisionero.py` — Sandbox Restringido)
+- Entorno de escritorio confinado (*Jail*) con principio de mínimo privilegio.
+- Restricción estricta de aplicaciones accesibles y control de tiempos de sesión mediante temporizadores.
+- Interceptación y bloqueo de llamadas o comandos fuera de la lista blanca (*allowlist*).
+
+---
+
+## 🚀 Instalación y Puesta en Marcha
+
+### Requisitos Previos
+* **Python 3.9 o superior**.
+* En Linux/Ubuntu (si no dispones de Tkinter instalado):
+  ```bash
+  sudo apt install python3-tk
+  ```
+
+### Ejecución
+
+1. **Clona el repositorio:**
+   ```bash
+   git clone https://github.com/Cristiangarcia913/Desktop-JailLinux.git
+   cd Desktop-JailLinux
+   ```
+
+2. **Instala las dependencias:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Inicia el lanzador de escritorio:**
+   ```bash
+   python dekstop.py
+   ```
+   *Desde el menú principal podrás seleccionar si iniciar la sesión como Carcelero o como Prisionero.*
+
+---
+
+## 👨‍💻 Autor
+
+**Cristian García Del Olmo**
+* Grado en Ingeniería Informática — **Universidad Camilo José Cela (UCJC)**
+* GitHub: [@Cristiangarcia913](https://github.com/Cristiangarcia913)
+* LinkedIn: [Cristian García Del Olmo](https://www.linkedin.com/in/cristian-garc%C3%ADa-del-olmo-7b8551333)
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
