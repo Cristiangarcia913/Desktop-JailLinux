@@ -11,6 +11,11 @@
   <img src="https://img.shields.io/badge/Systems-Linux%20Simulation-FCC624?logo=linux&logoColor=black" alt="Linux Security" />
 </p>
 
+<p align="center">
+  <img src="docs/launcher.png" alt="Selector de Perfil JailLinux" width="49%" />
+  <img src="docs/desktop_carcelero.png" alt="Escritorio Carcelero JailLinux" width="49%" />
+</p>
+
 ---
 
 ## 🎯 Descripción del Proyecto
